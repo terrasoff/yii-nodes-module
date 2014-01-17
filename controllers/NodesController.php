@@ -29,7 +29,7 @@ class NodesController extends CController
         $this->categoryTree = $data;
 
         Yii::app()->clientScript->registerCssFile(Yii::app()->assetManager->publish(
-            Yii::getPathOfAlias('application.modules.nodes.assets').'/editor.css'
+            Yii::getPathOfAlias('nodes.assets').'/editor.css'
         ));
 
         return parent::beforeAction($event);
@@ -88,7 +88,7 @@ class NodesController extends CController
         foreach($nodes as $n) $list[$n->idNode] = $n->getName();
 
         // стили и скрипты
-        $dir = Yii::getPathOfAlias('application.modules.nodes.assets');
+        $dir = Yii::getPathOfAlias('nodes.assets');
         Yii::app()->assetManager->publish($dir, true);
         $url = Yii::app()->assetManager->getPublishedUrl($dir);
 
@@ -145,7 +145,6 @@ class NodesController extends CController
     // статьи
     public function actionAdmin()
     {
-
         // родитель
         $parent = null;
         // смотрим, может определена категория?
@@ -171,10 +170,6 @@ class NodesController extends CController
 
         // ищем статьи из категории
         $data = Node::model()->getNodes($parent);
-
-        // скрипты
-        $cs = Yii::app()->clientScript;
-        $ap = Yii::getPathOfAlias('pages.assets');
         // формируем данные для страницы
         $module = Yii::app()->getModule('nodes');
         $data = array(

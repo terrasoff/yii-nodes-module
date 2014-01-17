@@ -80,4 +80,3 @@
     </form>
     <br class='clear' />
 </div>
-</div>

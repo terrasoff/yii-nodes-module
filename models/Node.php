@@ -198,7 +198,7 @@ class Node extends CActiveRecord
             $criteria->addCondition('parent_id = :parent_id');
             $criteria->params[':parent_id'] = $parent->idNode;
         } else {
-            $criteria->addCondition('ISNULL(parent_id)');
+            $criteria->addCondition('parent_id = 0');
         }
         $total = $this->type(self::TYPE_CONTENT)->count($criteria);
         $items = $this->type(self::TYPE_CONTENT)->findAll($criteria);
