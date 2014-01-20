@@ -89,7 +89,7 @@ class NodesController extends CController
 
         // стили и скрипты
         $dir = Yii::getPathOfAlias('nodes.assets');
-        Yii::app()->assetManager->publish($dir, true);
+        Yii::app()->assetManager->publish($dir);
         $url = Yii::app()->assetManager->getPublishedUrl($dir);
 
         Yii::app()->clientScript->registerCssFile($url.'/editor.css');

@@ -8,6 +8,4 @@
 EditorForm = function(params) {
     if (params == undefined)
         throw('Не заданы параметры для инициализации формы');
-
-
 }

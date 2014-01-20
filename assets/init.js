@@ -26,5 +26,14 @@ $(document).ready(function() {
                 $node.hide();
         }
     });
+    
+    $('.node-name').on('keydown', function() {
+        val = $(this).val().replace(/\s+/g,'-');
+        $(this)
+            .parents('.form-group')
+            .next('.form-group')
+            .find('input')
+            .val(val);
+    })
 
 });

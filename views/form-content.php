@@ -9,11 +9,17 @@
 
     <?php if (isset($content->idNodeContent)) echo CHtml::hiddenField($content->getAttributeName('idNodeContent'),$content->idNodeContent);?>
 
-
     <div class="form-group">
         <label class="col-sm-2 control-label">Имя</label>
         <div class="col-sm-5">
-            <?php echo CHtml::textField($content->getAttributeName('name'),$content->name, array('class'=>'form-control'));?>
+            <?php echo CHtml::textField($content->getAttributeName('name'),$content->name, array('class'=>'form-control node-name'));?>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Адрес</label>
+        <div class="col-sm-5">
+            <?php echo CHtml::textField($content->getAttributeName('alias'),$content->alias, array('class'=>'form-control'));?>
         </div>
     </div>
 
