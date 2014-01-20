@@ -27,7 +27,7 @@ $(document).ready(function() {
         }
     });
     
-    $('.node-name').on('keydown', function() {
+    $('.node-name').on('keyup', function() {
         val = $(this).val().replace(/\s+/g,'-');
         $(this)
             .parents('.form-group')

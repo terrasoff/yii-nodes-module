@@ -8,9 +8,11 @@
 
 class NodesModule extends CWebModule
 {
-
+    public $action_view = '/nodes/nodes/view';
     public $image_path = '/img/nodes/';
     public $cacheDuration = 1000;
+    public $layout = 'admin';
+    public $layout_path = 'application.views.layouts';
 
     public $defaultController = 'nodes';
 
@@ -28,9 +30,6 @@ class NodesModule extends CWebModule
     const ACTION_ADMIN = '/nodes/nodes/admin';
     const ACTION_PAGE = '/page/';
     const ACTION_TAGS = '/pages/tags/';
-
-    public $layout = 'admin';
-    public $layout_path = 'application.views.layouts';
 
     /* i18n */
     public static function t($str='', $lang = null, $dic='core', $params = null) {

@@ -250,17 +250,18 @@ class Node extends CActiveRecord
 
         if ($parent && $this->isContent()) {
             $params = array(
-                'container'=>$parent->getName(),
-                'content'=>$this->getName(),
+                'category'=>$parent->getName(),
+                'alias'=>$this->getAlias(),
             );
         }
         else {
             $params = array(
-                'container'=>$this->getName(),
+                'alias'=>$this->getAlias(),
             );
         }
 
-        return Yii::app()->createUrl('/nodes/nodes/view',$params);
+        $module = Yii::app()->getModule('nodes');
+        return Yii::app()->createUrl($module->action_view, $params);
     }
 
     public function getSeo() {
@@ -277,6 +278,12 @@ class Node extends CActiveRecord
 
     public function getName() {
         return $this->getContent()->name;
+    }
+
+    public function getAlias() {
+        return $this->getContent()->alias
+            ? $this->getContent()->alias
+            : $this->getName();
     }
 
     public function getCut() {

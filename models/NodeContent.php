@@ -102,9 +102,9 @@ class NodeContent extends CActiveRecord
         return $this->language === Yii::app()->language;
     }
 
-    public function getByTitle($name,$language = null) {
+    public function getByAlias($alias, $language = null) {
         return $this->findByAttributes(array(
-            'name'=>$name,
+            'alias'=>$alias,
             'language'=>$language ? $language : Yii::app()->language,
             'isPublished'=>1,
         ));
@@ -114,8 +114,8 @@ class NodeContent extends CActiveRecord
     {
         return array(
             array('language','in','range'=>Yii::app()->params['languages']),
-            array('name','length','min' => 3),
-            array('name, cut, description, keywords, seo', 'length', 'max' => 255),
+            array('name, alias','length','min' => 3),
+            array('name, alias, cut, description, keywords, seo', 'length', 'max' => 255),
             array('body, isPublished', 'safe'),
 
         );
