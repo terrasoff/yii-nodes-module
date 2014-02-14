@@ -58,7 +58,7 @@
                 ));
             }
 
-            $this->widget('ImperaviRedactorWidget', array(
+            $widget = $this->widget('nodes.widgets.NodesRedactorWidget', array(
                 // You can either use it for model attribute
                 'selector' => '.redactor',
                 // Some options, see http://imperavi.com/redactor/docs/

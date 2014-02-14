@@ -261,7 +261,7 @@ class Node extends CActiveRecord
         }
 
         $module = Yii::app()->getModule('nodes');
-        return Yii::app()->createUrl($module->action_view, $params);
+        return Yii::app()->createUrl($module->actionView, $params);
     }
 
     public function getSeo() {

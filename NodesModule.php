@@ -8,13 +8,20 @@
 
 class NodesModule extends CWebModule
 {
-    public $action_view = '/nodes/nodes/view';
     public $image_path = '/img/nodes/';
     public $cacheDuration = 1000;
+
+    /**
+     * @property string default node view
+     */
+    public $view = '';
     public $layout = 'admin';
     public $layout_path = 'application.views.layouts';
 
     public $defaultController = 'nodes';
+    public $actionView = 'nodes/nodes/node';
+
+
 
     const TYPE_CONTAINER = 1; // like folder
     const TYPE_NODE = 2; // like file (page)
@@ -39,6 +46,7 @@ class NodesModule extends CWebModule
 
     public function init() {
         $this->setImport(array(
+            'application.modules.nodes.widgets.*',
             'application.modules.nodes.models.*',
             'application.modules.nodes.controllers.*',
         ));
@@ -54,4 +62,11 @@ class NodesModule extends CWebModule
         return $model->getIndex();
     }
 
+    public function getUrl($alias) {
+        return Yii::app()->createUrl($this->actionView,array('alias'=>$alias));
+    }
+
+    public static function get() {
+        return Yii::app()->getModule('nodes');
+    }
 }
