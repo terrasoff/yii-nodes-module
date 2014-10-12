@@ -25,11 +25,9 @@ class NodeContent extends CActiveRecord
     public static function model($className=__CLASS__) {return parent::model($className);}
     public function tableName() { return $this->table;}
 
-    public function __construct($language = null) {
-        if ($language)
-            $this->language = $language;
-
-        return parent::__construct();
+    public function __construct($language = null)
+    {
+        $this->language = $language;
     }
 
     public function getAttributeName($attributeName) {
