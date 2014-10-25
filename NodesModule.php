@@ -57,16 +57,32 @@ class NodesModule extends CWebModule
      * Оглавление
      * @return mixed
      */
-    public function getIndex(){
+    public function getIndex()
+    {
         $model = new Node();
+
         return $model->getIndex();
     }
 
-    public function getUrl($alias) {
+    public function getUrl($alias)
+    {
         return Yii::app()->createUrl($this->actionView,array('alias'=>$alias));
     }
 
+    /**
+     * @return NodesModule
+     */
     public static function get() {
         return Yii::app()->getModule('nodes');
+    }
+
+    public function getUrlByName($name)
+    {
+        $model = NodeContent::model()->getByName($name);
+        if ($model === null) {
+            throw new Exception('Элемент с таким именем не найден');
+        }
+
+        return $this->getUrl($model->alias);
     }
 }

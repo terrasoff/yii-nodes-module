@@ -100,12 +100,33 @@ class NodeContent extends CActiveRecord
         return $this->language === Yii::app()->language;
     }
 
-    public function getByAlias($alias, $language = null) {
-        return $this->findByAttributes(array(
-            'alias'=>$alias,
-            'language'=>$language ? $language : Yii::app()->language,
-            'isPublished'=>1,
-        ));
+    public function getByAlias($alias, $language = null)
+    {
+        return $this
+            ->byPablished()
+            ->findByAttributes([
+                'alias'=>$alias,
+                'language'=>$language ? $language : Yii::app()->language,
+            ]);
+    }
+
+    public function getByName($name, $language = null)
+    {
+        return $this
+            ->byPablished()
+            ->findByAttributes([
+                'name'=>$name,
+                'language'=>$language ? $language : Yii::app()->language
+        ]);
+    }
+
+    public function byPablished()
+    {
+        $criteria = new CDbCriteria();
+        $criteria->addCondition('t.isPublished = 1');
+        $this->getDbCriteria()->mergeWith($criteria);
+
+        return $this;
     }
 
     public function rules()
