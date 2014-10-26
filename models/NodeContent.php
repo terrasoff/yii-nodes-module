@@ -103,7 +103,7 @@ class NodeContent extends CActiveRecord
     public function getByAlias($alias, $language = null)
     {
         return $this
-            ->byPablished()
+            ->byPublished()
             ->findByAttributes([
                 'alias'=>$alias,
                 'language'=>$language ? $language : Yii::app()->language,
@@ -113,14 +113,14 @@ class NodeContent extends CActiveRecord
     public function getByName($name, $language = null)
     {
         return $this
-            ->byPablished()
+            ->byPublished()
             ->findByAttributes([
                 'name'=>$name,
                 'language'=>$language ? $language : Yii::app()->language
         ]);
     }
 
-    public function byPablished()
+    public function byPublished()
     {
         $criteria = new CDbCriteria();
         $criteria->addCondition('t.isPublished = 1');
