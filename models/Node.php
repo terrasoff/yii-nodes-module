@@ -156,7 +156,7 @@ class Node extends CActiveRecord
     {
         return array(
             'TreeBehavior' => array(
-                'class' => 'ext.TreeBehavior.TreeBehavior',
+                'class' => 'vendor.terrasoff.TreeBehavior.TreeBehavior',
                 'idAttribute'=>'idNode',
                 'criteria'=>array(
                     'condition'=>'type=:type',
